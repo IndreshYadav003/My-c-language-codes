@@ -78,7 +78,7 @@ struct node *sortlinkedlist(struct node *start){
         preptr=ptr->nextptr;
         while ( preptr!= NULL)
         {
-            if(ptr->num>preptr->num){
+            if(ptr->num<preptr->num){
                 val=ptr->num;
                 ptr->num=preptr->num;
                 preptr->num=val;
