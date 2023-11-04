@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+//first we define size of array 
+#define MAX_SIZE 100
+// top
+int top=-1;
+ int arr[MAX_SIZE];
+// To check stack is empty or not 
+void isEmpty( ) {
+    if(top==-1){
+    printf("Stack is Empty");}
+  else printf("Stack is not Empty");
+    return ;
+}
+// To check stack is full or not
+void isFull() {
+     if(top == MAX_SIZE - 1){
+     printf("\n Stack is Full");
+     }
+     else 
+     printf("\nStack is not full");
+     return ;
+}
+// Create addORfush function 
+void push( int value) {
+    if (top==MAX_SIZE-1) {
+        printf("Stack is full and you can not push %d\n", value);
+    } else {
+    top=top+1;
+        arr[top] = value;
+    }
+}
+// create remove or pop function 
+void pop() {
+    if (top==-1) {
+        printf("\nStack is empty. Cannot pop.\n");
+      return ;
+    } else {
+        top--;
+printf("\n Your removed elements=%d", arr[top]);        
+       return;
+    }
+}
+
+void peek() {
+    if (top==-1) {
+        printf("\nStack is empty. Cannot peek.\n");
+        return;
+    } else {
+    printf("\n Top elements=%d",arr[top]);
+        return;
+    }
+}
+void display (){
+for(int i=0;i<=top;i++){
+printf("\n%d \t",arr[i]);
+}
+}
+int main() {
+printf("\nWe add three elements\n");
+    push(10);
+    push(23);
+    push(40);
+    display();
+printf("\nAfter adding elements our peek");    
+    peek();
+ printf("\nTo check our stack is full");   
+    isFull();
+  printf("\n After removing one element");  
+    pop();
+  printf("\nRemoving one element our peek");  
+    peek();
+    printf("\n my stack");
+    display();
+    return 0;
+}
