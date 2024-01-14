@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct {
+    char name[50];
+    int rollno;
+    int marks;
+    char dob[20];
+} Student;
+
+int compareStudents(const void* s1, const void* s2) {
+    Student* student1 = (Student*)s1;
+    Student* student2 = (Student*)s2;
+    
+    if (student2->marks > student1->marks) return 1;
+    else if (student2->marks < student1->marks) return -1;
+    else {
+        if (student1->rollno > student2->rollno) return 1;
+        else if (student1->rollno < student2->rollno) return -1;
+        else return 0;
+    }
+}
+
+int main() {
+    Student harsh;
+    strcpy(harsh.name, "Harsh");
+    harsh.rollno = 23;
+    strcpy(harsh.dob, "04-09-3009");
+    harsh.marks = 43;
+    
+    Student vipin;
+    strcpy(vipin.name, "Vipin");
+    vipin.rollno = 343;
+    strcpy(vipin.dob, "23-02-2342");
+    vipin.marks = 132;
+    
+    Student studentList[2];
+    studentList[0] = vipin;
+    studentList[1] = harsh;
+    
+    qsort(studentList, 2, sizeof(Student), compareStudents);
+    
+    printf("%s\n", studentList[0].name);
+    printf("%d\n", studentList[0].rollno);
+    printf("%d\n", studentList[0].marks);
+    printf("%s\n", studentList[0].dob);
+    
+    return 0;
+}
+// output of my code
+/Vipin
+//343
+//132
+//23-02-2342
+
