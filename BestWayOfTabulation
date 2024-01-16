@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int a;
+    printf("Please Enter Number\n");
+    scanf("%d", &a);
+    int dp[a+1];
+    int prev1 = 1;
+    int prev2 = 1;
+    int current = 0;
+    for (int i = 3; i <= a; i++) {
+        current = prev1 + prev2;
+        prev1 = prev2;
+        prev2 = current;
+        dp[i] = dp[i-1] + dp[i-2];
+    }
+    printf("%d\n", current);
+    return 0;
+}
+
+
