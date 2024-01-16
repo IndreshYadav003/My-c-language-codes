@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int calls = 0;
+
+int fibo(int n) {
+    if (n == 0 || n == 1) {
+        return n;
+    }
+    
+    calls++;
+    
+    return fibo(n - 1) + fibo(n - 2);
+}
+
+int main() {
+    int a;
+    printf("Please Enter Number: ");
+    scanf("%d", &a);
+    printf("Fibonic of this position = %d\n", fibo(a));
+    printf("Number times function calls = %d\n", calls);
+    
+    return 0;
+}
+
+
