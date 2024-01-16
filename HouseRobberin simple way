@@ -1,0 +1,25 @@
+#include <stdio.h>
+int robber(int house[], int index) {
+    if (index == sizeof(house) / sizeof(house[0]) - 1) {
+        return house[index];
+    }
+    if (index >= sizeof(house) / sizeof(house[0])) {
+        return 0;
+    }
+    int pick = house[index] + robber(house, index + 2);
+    int Not_pick = robber(house, index + 1);
+    
+    if (pick > Not_pick) {
+        return pick;
+    } else {
+        return Not_pick;
+    }
+}
+
+int main() {
+    int house[] = {9, 1, 3, 8, 2, 7, 6};
+    printf("%d\n", robber(house, 0));
+    return 0;
+}
+
+
