@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int calls = 0;
+
+int fibo(int n, int dp[]) {
+    if (n == 1 || n == 2) {
+        return dp[n] = 1;
+    }
+    
+    calls++;
+    
+    if (dp[n] != -1) {
+        return dp[n];
+    }
+    
+    return dp[n] = fibo(n - 1, dp) + fibo(n - 2, dp);
+}
+
+int main() {
+    int a;
+    printf("Please Enter Number: ");
+    scanf("%d", &a);
+    
+    int dp[a + 1];
+    dp[1] = 1;
+    dp[2] = 1;
+    
+    for (int i = 3; i <= a; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    
+    printf("Fibonic of this position = %d\n", fibo(a, dp));
+    printf("Number times function calls = %d\n", calls);
+    
+    return 0;
+}
+
+
