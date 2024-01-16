@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+int calls = 0;
+
+int no_of_way(char number[], int index) {
+    if (index <= 0) {
+        return 1;
+    }
+    int not_combine = 0;
+    if (number[index] != '0') {
+        not_combine = no_of_way(number, index - 1);
+    }
+    int combine = 0;
+    if (number[index - 1] == '1' || (number[index - 1] == '2' && number[index] <= '6')) {
+        combine = no_of_way(number, index - 2);
+    }
+    calls++;
+    return not_combine + combine;
+}
+
+int main() {
+    char number[] = "11126";
+    printf("%d\n", no_of_way(number, strlen(number) - 1));
+    printf("%d\n", calls);
+    return 0;
+}
+
+
